@@ -27,6 +27,9 @@ struct ContentView: View {
             Color.black
                 .ignoresSafeArea()
             VStack {
+                
+                Spacer()
+                
                 ColorCircle(color: .red, opacity: lightIsRed)
                 ColorCircle(color: .yellow, opacity: lightIsYellow)
                     .padding()
@@ -81,6 +84,9 @@ struct ContentView: View {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        Group {
+            ContentView()
+            ContentView()
+        }
     }
 }
