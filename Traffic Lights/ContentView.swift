@@ -7,20 +7,30 @@
 
 import SwiftUI
 
+enum CurrentLight {
+    case red, yellow, green
+}
+
 struct ContentView: View {
-    
+    @State var currentLight = CurrentLight.red
     @State var title = "START"
-    @State var opacity = 0.3
+    @State var lightIsOn = 1.0
+    @State var lightIsOff = 0.3
+    
+    @State var lightIsRed = 0.3
+    @State var lightIsYellow = 0.3
+    @State var lightIsGreen = 0.3
+    
 //    var color: Color
     var body: some View {
         ZStack {
             Color.black
                 .ignoresSafeArea()
             VStack {
-                ColorCircle(color: .red, opacity: opacity)
-                ColorCircle(color: .yellow, opacity: opacity)
+                ColorCircle(color: .red, opacity: lightIsRed)
+                ColorCircle(color: .yellow, opacity: lightIsYellow)
                     .padding()
-                ColorCircle(color: .green, opacity: opacity)
+                ColorCircle(color: .green, opacity: lightIsGreen)
                 Spacer()
                 Button(action: {buttonTapped()}) {
                         Text(title)
@@ -43,25 +53,24 @@ struct ContentView: View {
         if title == "START" {
             title = "NEXT"
         }
-//    }
-//
-//        switch currentLight {
-//        case .red:
-//            greenLight.alpha = lightIsOff
-//            redLight.alpha = lightIsOn
-//            currentLight = .yellow
-//        case .yellow:
-//            redLight.alpha = lightIsOff
-//            yellowLight.alpha = lightIsOn
-//            currentLight = .green
-//        case .green:
-//            greenLight.alpha = lightIsOn
-//            yellowLight.alpha = lightIsOff
-//            currentLight = .red
-//        }
-//    }
+
+        switch currentLight {
+        case .red:
+            lightIsGreen = lightIsOff
+            lightIsRed = lightIsOn
+            currentLight = .yellow
+        case .yellow:
+            lightIsRed = lightIsOff
+            lightIsYellow = lightIsOn
+            currentLight = .green
+        case .green:
+            lightIsYellow = lightIsOff
+            lightIsGreen = lightIsOn
+            currentLight = .red
+        }
     }
-}
+    }
+
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
