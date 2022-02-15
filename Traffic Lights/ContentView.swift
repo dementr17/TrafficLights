@@ -31,23 +31,29 @@ struct ContentView: View {
                 ColorCircle(color: .yellow, opacity: lightIsYellow)
                     .padding()
                 ColorCircle(color: .green, opacity: lightIsGreen)
+                
                 Spacer()
-                Button(action: {buttonTapped()}) {
-                        Text(title)
-                            .font(.title)
-                            .foregroundColor(.white)
-                            .bold()
-                            .frame(width: 150, height: 60)
-                            .background(Color.blue)
-                            .cornerRadius(15)
-                            .overlay(
-                                        RoundedRectangle(cornerRadius: 20)
-                                            .stroke(Color.white, lineWidth: 5)
-                                    )
-                    }
-                .padding()
+                
+                buttonSettings
             }
         }
+    }
+    
+    private var buttonSettings: some View {
+        Button(action: { buttonTapped() }) {
+                Text(title)
+                    .font(.title)
+                    .foregroundColor(.white)
+                    .bold()
+                    .frame(width: 150, height: 60)
+                    .background(Color.blue)
+                    .cornerRadius(15)
+                    .overlay(
+                                RoundedRectangle(cornerRadius: 20)
+                                    .stroke(Color.white, lineWidth: 5)
+                            )
+            }
+        .padding()
     }
     
     private func buttonTapped() {
