@@ -14,13 +14,10 @@ enum CurrentLight {
 struct ContentView: View {
     @State var currentLight = CurrentLight.red
     @State var title = "START"
-    
-    
     @State var lightIsRed = 0.3
     @State var lightIsYellow = 0.3
     @State var lightIsGreen = 0.3
     
-//    var color: Color
     var body: some View {
         ZStack {
             Color.black
@@ -36,26 +33,10 @@ struct ContentView: View {
                 
                 Spacer()
                 
-                buttonSettings
+                ButtonView(title: title, action: buttonTapped)
+                    .padding()
             }
         }
-    }
-    
-    private var buttonSettings: some View {
-        Button(action: { buttonTapped() }) {
-                Text(title)
-                    .font(.title)
-                    .foregroundColor(.white)
-                    .bold()
-                    .frame(width: 150, height: 60)
-                    .background(Color.blue)
-                    .cornerRadius(15)
-                    .overlay(
-                                RoundedRectangle(cornerRadius: 20)
-                                    .stroke(Color.white, lineWidth: 5)
-                            )
-            }
-        .padding()
     }
     
     private func buttonTapped() {
