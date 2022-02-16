@@ -14,8 +14,7 @@ enum CurrentLight {
 struct ContentView: View {
     @State var currentLight = CurrentLight.red
     @State var title = "START"
-    @State var lightIsOn = 1.0
-    @State var lightIsOff = 0.3
+    
     
     @State var lightIsRed = 0.3
     @State var lightIsYellow = 0.3
@@ -60,6 +59,9 @@ struct ContentView: View {
     }
     
     private func buttonTapped() {
+        let lightIsOn = 1.0
+        let lightIsOff = 0.3
+        
         if title == "START" {
             title = "NEXT"
         }
@@ -85,7 +87,6 @@ struct ContentView: View {
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         Group {
-            ContentView()
             ContentView()
         }
     }
